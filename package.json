@@ -23,7 +23,7 @@
     "workspaceContains:**/package.json"
   ],
   "main": "./out/extension.js",
-  "icon": "./images/icon.png",
+  "icon": "images/icon.png",
   "contributes": {
     "commands": [
       {
