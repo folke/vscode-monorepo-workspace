@@ -1,25 +1,90 @@
 {
-  "name": "vscode-ultra-runner",
-  "displayName": "Ultra Runner",
-  "description": "Ultra fast monorepo script runner and build tool",
-  "version": "0.0.1",
+  "name": "vscode-monorepo-workspace",
+  "displayName": "Monorepo Workspace",
+  "description": "Manage monorepos with multi-root workspaces. Supports Lerna, Yarn, Pnpm, Rushjs and recursive package directories",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.42.0"
   },
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "workspace",
+    "monorepo",
+    "project",
+    "yarn",
+    "folder"
+  ],
   "activationEvents": [
-    "onCommand:extension.helloWorld"
+    "workspaceContains:**/package.json"
   ],
   "main": "./out/extension.js",
+  "icon": "./images/icon.png",
   "contributes": {
     "commands": [
       {
-        "command": "extension.helloWorld",
-        "title": "Hello World"
+        "command": "extension.openPackageCurrentWindow",
+        "title": "Monorepo: Open Package (Current Window)"
+      },
+      {
+        "command": "extension.openPackageNewWindow",
+        "title": "Monorepo: Open Package (New Window)"
+      },
+      {
+        "command": "extension.openPackageWorkspaceFolder",
+        "title": "Monorepo: Open Package (Workspace Folder)"
+      },
+      {
+        "command": "extension.updateAll",
+        "title": "Monorepo: Sync Workspace Folders"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Monorepo Workspace",
+      "properties": {
+        "monorepoWorkspace.folders.regex.apps": {
+          "type": "string",
+          "default": "^app|web|api|frontend|backend",
+          "description": "Regex to match app-like package paths"
+        },
+        "monorepoWorkspace.folders.prefix.apps": {
+          "type": "string",
+          "default": "🚀 ",
+          "description": "Folder prefix for apps"
+        },
+        "monorepoWorkspace.folders.regex.libs": {
+          "type": "string",
+          "default": "^common|package|lib|private",
+          "description": "Regex to match library-like package paths"
+        },
+        "monorepoWorkspace.folders.prefix.libs": {
+          "type": "string",
+          "default": "📦 ",
+          "description": "Folder prefix for libraries"
+        },
+        "monorepoWorkspace.folders.regex.tools": {
+          "type": "string",
+          "default": "^tool|script|util",
+          "description": "Regex to match tool-like package paths"
+        },
+        "monorepoWorkspace.folders.prefix.tools": {
+          "type": "string",
+          "default": "⚙️ ",
+          "description": "Folder prefix for tools"
+        },
+        "monorepoWorkspace.folders.prefix.unknown": {
+          "type": "string",
+          "default": "",
+          "description": "Folder prefix for unknown packages"
+        },
+        "monorepoWorkspace.folders.prefix.root": {
+          "type": "string",
+          "default": "✨ ",
+          "description": "Folder prefix for the root folder"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
