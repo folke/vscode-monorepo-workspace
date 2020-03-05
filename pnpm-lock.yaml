@@ -1,5 +1,5 @@
 dependencies:
-  ultra-runner: 2.0.1
+  ultra-runner: 2.1.0
 devDependencies:
   '@types/glob': 7.1.1
   '@types/mocha': 7.0.2
@@ -2287,7 +2287,7 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==
-  /ultra-runner/2.0.1:
+  /ultra-runner/2.1.0:
     dependencies:
       ansi-split: 1.0.1
       chalk: 3.0.0
@@ -2301,9 +2301,11 @@ packages:
       yamljs: 0.3.0
       yargs: 15.1.0
     dev: false
+    engines:
+      node: '>=10.0.0'
     hasBin: true
     resolution:
-      integrity: sha512-wZHel/oF3H8wWZ5dmGgqa1Dm7RV4Igs5j5Jhu5E97bKd7qXk6B6TtQwM+gsEf7L8R0O8z6yy+sZZC/3W9j1XuA==
+      integrity: sha512-Bql9AghczH4AKgEnCDlS/fELvZufPYOGC7JRA+pXvWdWyhjqSyUsKOpB8us1g2cuHd2MtXA6kDwtcEaAMFpClQ==
   /uri-js/4.2.2:
     dependencies:
       punycode: 2.1.1
