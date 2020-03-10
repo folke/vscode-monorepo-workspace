@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable unicorn/prefer-starts-ends-with */
 
 import * as path from "path"
@@ -93,13 +94,13 @@ function addWorkspaceFolder(item: WorkspaceFolderItem) {
   })
 }
 
-async function updateAll(items?: WorkspaceFolderItem[]) {
+async function updateAll(items?: WorkspaceFolderItem[], clean = false) {
   if (!items) items = await getPackageFolders()
   if (!items) return
   const itemsSet = new Set(items.map(item => item.root.fsPath))
   const folders = vscodeWorkspace.workspaceFolders
   const adds: { name: string; uri: Uri }[] = []
-  if (folders) {
+  if (folders && !clean) {
     adds.push(...folders.filter(f => !itemsSet.has(f.uri.fsPath)))
   }
   adds.push(
@@ -109,6 +110,35 @@ async function updateAll(items?: WorkspaceFolderItem[]) {
     }))
   )
   vscodeWorkspace.updateWorkspaceFolders(0, folders?.length, ...adds)
+}
+
+async function select(items?: WorkspaceFolderItem[]) {
+  if (!items) items = await getPackageFolders()
+  if (!items) return
+  const itemsSet = new Map(items.map(item => [item.root.fsPath, item]))
+  const folders = vscodeWorkspace.workspaceFolders
+
+  if (folders) {
+    for (const folder of folders) {
+      if (itemsSet.has(folder.uri.fsPath)) {
+        itemsSet.get(folder.uri.fsPath)!.picked = true
+      } else {
+        items.push({
+          root: folder.uri,
+          isRoot: false,
+          label: folder.name,
+          description: "",
+          picked: true,
+        })
+      }
+    }
+  }
+
+  const picked = await window.showQuickPick(items, {
+    canPickMany: true,
+    matchOnDescription: true,
+  })
+  if (picked?.length) updateAll(picked, true)
 }
 
 async function openPackage(action: PackageAction) {
@@ -154,6 +184,10 @@ export function activate(context: ExtensionContext) {
 
   context.subscriptions.push(
     commands.registerCommand("extension.updateAll", () => updateAll())
+  )
+
+  context.subscriptions.push(
+    commands.registerCommand("extension.select", () => select())
   )
 }
 

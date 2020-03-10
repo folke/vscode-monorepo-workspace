@@ -11,6 +11,7 @@ All **Monorepo Workspace** functionality can be found in the command palette. Av
 Selecting a package:
 ![Commands](images/list.png)
 
+* `Monorepo: Select Workspace Folders`: select active folders in your workspace, including packages in your repository
 * `Monorepo: Open Package (Current Window)`: open a package from your repository in the current window
 * `Monorepo: Open Package (New Window)`: open a package from your repository in a new window
 * `Monorepo: Open Package (Workspace Folder)`: add a package from your repository as a workspace folder

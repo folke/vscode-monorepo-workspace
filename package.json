@@ -39,6 +39,10 @@
         "title": "Monorepo: Open Package (Workspace Folder)"
       },
       {
+        "command": "extension.select",
+        "title": "Monorepo: Select Workspace Folders"
+      },
+      {
         "command": "extension.updateAll",
         "title": "Monorepo: Sync Workspace Folders"
       }
