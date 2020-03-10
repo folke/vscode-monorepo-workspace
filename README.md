@@ -8,7 +8,10 @@ All **Monorepo Workspace** functionality can be found in the command palette. Av
 
 ![Commands](images/commands.png)
 
-Selecting a package:
+Selecting workspace folders:
+![Select](images/select.png)
+
+Selecting one package:
 ![Commands](images/list.png)
 
 * `Monorepo: Select Workspace Folders`: select active folders in your workspace, including packages in your repository
