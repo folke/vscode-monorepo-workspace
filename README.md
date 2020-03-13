@@ -6,7 +6,7 @@ Manage monorepos with multi-root workspaces. Supports Lerna, Yarn, Pnpm, Rushjs 
 
 All **Monorepo Workspace** functionality can be found in the command palette. Available commands:
 
-![Commands](images/commands.png)
+![Commands](images/animation.gif)
 
 Selecting workspace folders:
 ![Select](images/select.png)
