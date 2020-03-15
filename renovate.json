@@ -1,5 +1,16 @@
 {
-  "extends": [
-    "config:base"
+  "extends": ["config:base", ":semanticCommits", ":automergePatch"],
+  "packageRules": [
+    {
+      "packagePatterns": ["vscode"],
+      "groupName": "vscode"
+    },
+    {
+      "packagePatterns": ["*"],
+      "minor": {
+        "groupName": "all non-major dependencies",
+        "groupSlug": "all-minor-patch"
+      }
+    }
   ]
 }
