@@ -24,13 +24,32 @@ You can also create workspace folders for all your repository packages with `Mon
 
 ## Extension Settings
 
-**Monorepo Manager** tries to detect the type of package based on configurable regexes.
+**Monorepo Manager** tries to detect the type of package (library, application or tool) based on configurable regexes.
 
 The workspace folder prefix containing the emoji is also configurable.
+
+You can also configure custom types with a prefix in your JSON settings:
+
+```json
+{
+  "monorepoWorkspace.folders.custom": [
+    {"regex":"app1", "prefix": "🔥"},
+    {"regex":"app2", "prefix": "📚"}
+  ]
+}
+```
 
 You can find all options under "Monorepo Workspace" in your configurtion.
 
 ## Release Notes
+
+### 1.2.0
+
+Added option to configure custom package types
+
+### 1.1.3
+
+Fixed an issue with workspace folders on Windows
 
 ### 1.0.0
 

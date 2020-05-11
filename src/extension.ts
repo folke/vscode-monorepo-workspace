@@ -21,8 +21,18 @@ interface WorkspaceFolderItem extends QuickPickItem {
 function getFolderEmoji(root: string, pkgRoot: string) {
   const config = vscodeWorkspace.getConfiguration("monorepoWorkspace.folders")
   if (root == pkgRoot) return config.get<string>("prefix.root") || ""
-
   const dir = path.relative(root, pkgRoot)
+
+  // Use custom prefixes first
+  const custom = config.get<{ regex: string; prefix: string }[]>("custom")
+  if (custom?.length) {
+    for (const c of custom) {
+      if (c.prefix && c.regex) {
+        if (new RegExp(c.regex, "u").test(dir)) return c.prefix
+      }
+    }
+  }
+
   for (const type of ["apps", "libs", "tools"]) {
     const regex = config.get<string>(`regex.${type}`)
     const prefix = config.get<string>(`prefix.${type}`)
