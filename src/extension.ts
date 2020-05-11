@@ -44,17 +44,19 @@ async function getPackageFolders(): Promise<WorkspaceFolderItem[] | undefined> {
       const rootPkg = workspace.getPackageForRoot(workspace.root)
       return [
         {
-          label: `${getFolderEmoji(workspace.root, workspace.root)}${rootPkg ||
-            "root"}`,
-          description: `${workspace.type[0].toUpperCase() +
-            workspace.type.slice(1)} Workspace Root`,
+          label: `${getFolderEmoji(workspace.root, workspace.root)}${
+            rootPkg || "root"
+          }`,
+          description: `${
+            workspace.type[0].toUpperCase() + workspace.type.slice(1)
+          } Workspace Root`,
           root: Uri.parse(workspace.root),
           isRoot: true,
         },
         ...workspace
           .getPackages()
-          .filter(p => p.root !== workspace.root)
-          .map(p => {
+          .filter((p) => p.root !== workspace.root)
+          .map((p) => {
             return {
               label: `${getFolderEmoji(workspace.root, p.root)}${p.name}`,
               description: `at ${path.relative(workspace.root, p.root)}`,
@@ -97,14 +99,14 @@ function addWorkspaceFolder(item: WorkspaceFolderItem) {
 async function updateAll(items?: WorkspaceFolderItem[], clean = false) {
   if (!items) items = await getPackageFolders()
   if (!items) return
-  const itemsSet = new Set(items.map(item => item.root.fsPath))
+  const itemsSet = new Set(items.map((item) => item.root.fsPath))
   const folders = vscodeWorkspace.workspaceFolders
   const adds: { name: string; uri: Uri }[] = []
   if (folders && !clean) {
-    adds.push(...folders.filter(f => !itemsSet.has(f.uri.fsPath)))
+    adds.push(...folders.filter((f) => !itemsSet.has(f.uri.fsPath)))
   }
   adds.push(
-    ...items.map(item => ({
+    ...items.map((item) => ({
       name: item.label,
       uri: item.root,
     }))
@@ -115,7 +117,7 @@ async function updateAll(items?: WorkspaceFolderItem[], clean = false) {
 async function select(items?: WorkspaceFolderItem[]) {
   if (!items) items = await getPackageFolders()
   if (!items) return
-  const itemsSet = new Map(items.map(item => [item.root.fsPath, item]))
+  const itemsSet = new Map(items.map((item) => [item.root.fsPath, item]))
   const folders = vscodeWorkspace.workspaceFolders
 
   if (folders) {
