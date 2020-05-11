@@ -30,7 +30,7 @@ function getFolderEmoji(root: string, pkgRoot: string) {
       if (new RegExp(regex, "u").test(dir)) return prefix
     }
   }
-  return config.get<string>("prefix.other") || ""
+  return config.get<string>("prefix.unknown") || ""
 }
 
 async function getPackageFolders(): Promise<WorkspaceFolderItem[] | undefined> {
