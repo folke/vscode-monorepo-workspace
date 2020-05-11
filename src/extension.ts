@@ -50,7 +50,7 @@ async function getPackageFolders(): Promise<WorkspaceFolderItem[] | undefined> {
           description: `${
             workspace.type[0].toUpperCase() + workspace.type.slice(1)
           } Workspace Root`,
-          root: Uri.parse(workspace.root),
+          root: Uri.file(workspace.root),
           isRoot: true,
         },
         ...workspace
@@ -60,7 +60,7 @@ async function getPackageFolders(): Promise<WorkspaceFolderItem[] | undefined> {
             return {
               label: `${getFolderEmoji(workspace.root, p.root)}${p.name}`,
               description: `at ${path.relative(workspace.root, p.root)}`,
-              root: Uri.parse(p.root),
+              root: Uri.file(p.root),
               isRoot: false,
             }
           })
