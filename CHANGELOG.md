@@ -1,9 +1,13 @@
-# Change Log
+# Release Notes
 
-All notable changes to the "vscode-ultra-runner" extension will be documented in this file.
+## 1.2.0
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+Added option to configure custom package types
 
-## [Unreleased]
+## 1.1.3
 
-- Initial release
+Fixed an issue with workspace folders on Windows
+
+## 1.0.0
+
+Initial release :tada:
