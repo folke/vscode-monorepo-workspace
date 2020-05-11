@@ -2,7 +2,7 @@
   "name": "vscode-monorepo-workspace",
   "displayName": "Monorepo Workspace",
   "description": "Manage monorepos with multi-root workspaces. Supports Lerna, Yarn, Pnpm, Rushjs and recursive package directories",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "publisher": "folke",
   "repository": "http://github.com/folke/vscode-monorepo-workspace",
   "license": "SEE LICENSE IN LICENSE",
