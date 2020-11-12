@@ -1,16 +1,27 @@
 {
-  "extends": ["config:base", ":semanticCommits", ":automergePatch"],
+  "extends": [
+    "config:base",
+    ":semanticCommits",
+    "group:allApollographql",
+    "group:definitelyTyped",
+    "group:vueMonorepo",
+    "group:nestMonorepo",
+    "group:fortawesome",
+    "group:linters",
+    "group:test",
+    "group:allNonMajor"
+  ],
+  "masterIssue": true,
+  "prHourlyLimit": 20,
   "packageRules": [
     {
       "packagePatterns": ["vscode"],
       "groupName": "vscode"
     },
     {
-      "packagePatterns": ["*"],
-      "minor": {
-        "groupName": "all non-major dependencies",
-        "groupSlug": "all-minor-patch"
-      }
+      "updateTypes": ["patch", "pin", "digest"],
+      "automerge": true
     }
   ]
 }
+
