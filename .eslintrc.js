@@ -45,6 +45,7 @@ module.exports = {
     "unicorn/prevent-abbreviations": "off",
     "unicorn/explicit-length-check": "off",
     "unicorn/consistent-function-scoping": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "lines-between-class-members": [
       "error",
       "always",

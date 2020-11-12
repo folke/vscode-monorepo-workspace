@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-/* eslint-disable unicorn/prefer-starts-ends-with */
-
-import * as path from "path"
+import path from "path"
 import { getWorkspace } from "ultra-runner"
 import {
   commands,
@@ -133,6 +130,7 @@ async function select(items?: WorkspaceFolderItem[]) {
   if (folders) {
     for (const folder of folders) {
       if (itemsSet.has(folder.uri.fsPath)) {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         itemsSet.get(folder.uri.fsPath)!.picked = true
       } else {
         items.push({
@@ -150,7 +148,7 @@ async function select(items?: WorkspaceFolderItem[]) {
     canPickMany: true,
     matchOnDescription: true,
   })
-  if (picked?.length) updateAll(picked, true)
+  if (picked?.length) return updateAll(picked, true)
 }
 
 async function openPackage(action: PackageAction) {
@@ -163,11 +161,9 @@ async function openPackage(action: PackageAction) {
     if (item) {
       switch (action) {
         case PackageAction.currentWindow:
-          commands.executeCommand("vscode.openFolder", item.root)
-          break
+          return commands.executeCommand("vscode.openFolder", item.root)
         case PackageAction.newWindow:
-          commands.executeCommand("vscode.openFolder", item.root, true)
-          break
+          return commands.executeCommand("vscode.openFolder", item.root, true)
         case PackageAction.workspaceFolder:
           addWorkspaceFolder(item)
           break

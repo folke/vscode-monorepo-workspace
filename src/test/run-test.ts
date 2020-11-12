@@ -1,4 +1,4 @@
-import * as path from "path"
+import path from "path"
 
 import { runTests } from "vscode-test"
 
@@ -14,11 +14,11 @@ async function main() {
 
     // Download VS Code, unzip it and run the integration test
     await runTests({ extensionDevelopmentPath, extensionTestsPath })
-  } catch (error) {
+  } catch {
     console.error("Failed to run tests")
     // eslint-disable-next-line unicorn/no-process-exit
     process.exit(1)
   }
 }
 
-main()
+void main()
