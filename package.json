@@ -119,7 +119,7 @@
     "@types/vscode": "1.51.0",
     "@typescript-eslint/eslint-plugin": "4.7.0",
     "@typescript-eslint/parser": "4.7.0",
-    "devmoji": "2.1.10",
+    "devmoji": "2.1.11",
     "eslint": "7.13.0",
     "eslint-config-prettier": "6.15.0",
     "eslint-plugin-chai-expect": "2.2.0",
