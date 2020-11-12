@@ -116,17 +116,17 @@
     "@types/glob": "7.1.3",
     "@types/mocha": "8.0.4",
     "@types/node": "13.13.30",
-    "@types/vscode": "1.50.0",
+    "@types/vscode": "1.51.0",
     "@typescript-eslint/eslint-plugin": "4.7.0",
     "@typescript-eslint/parser": "4.7.0",
-    "devmoji": "2.1.9",
-    "eslint": "7.12.1",
-    "eslint-config-prettier": "6.14.0",
+    "devmoji": "2.1.10",
+    "eslint": "7.13.0",
+    "eslint-config-prettier": "6.15.0",
     "eslint-plugin-chai-expect": "2.2.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jest": "24.1.1",
     "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-prettier": "3.1.3",
+    "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-unicorn": "23.0.0",
     "glob": "7.1.6",
@@ -134,7 +134,7 @@
     "mocha": "8.2.1",
     "prettier": "2.1.2",
     "typescript": "4.0.5",
-    "vscode-test": "1.4.0"
+    "vscode-test": "1.4.1"
   },
   "dependencies": {
     "ultra-runner": "3.5.0"
