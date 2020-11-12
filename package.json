@@ -117,9 +117,9 @@
     }
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^16.0.0",
-    "@rollup/plugin-node-resolve": "^10.0.0",
-    "@rollup/plugin-typescript": "^6.1.0",
+    "@rollup/plugin-commonjs": "16.0.0",
+    "@rollup/plugin-node-resolve": "10.0.0",
+    "@rollup/plugin-typescript": "6.1.0",
     "@types/glob": "7.1.3",
     "@types/mocha": "8.0.4",
     "@types/node": "13.13.30",
@@ -140,10 +140,10 @@
     "husky": "4.3.0",
     "mocha": "8.2.1",
     "prettier": "2.1.2",
-    "rollup": "^2.33.1",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.29.0",
-    "tslib": "^2.0.3",
+    "rollup": "2.33.1",
+    "rollup-plugin-terser": "7.0.2",
+    "rollup-plugin-typescript2": "0.29.0",
+    "tslib": "2.0.3",
     "typescript": "4.0.5",
     "vscode-test": "1.4.1"
   },
