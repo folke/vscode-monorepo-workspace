@@ -1,3 +1,4 @@
+// eslint-disable-next-line unicorn/import-style
 import path from "path"
 import { getWorkspace } from "ultra-runner"
 import {
@@ -40,7 +41,9 @@ function getFolderEmoji(root: string, pkgRoot: string) {
   return config.get<string>("prefix.unknown") || ""
 }
 
-async function getPackageFolders(): Promise<WorkspaceFolderItem[] | undefined> {
+async function getPackageFolders(
+  includeRoot = true
+): Promise<WorkspaceFolderItem[] | undefined> {
   const cwd = vscodeWorkspace.workspaceFolders?.[0].uri.fsPath
   if (cwd) {
     const workspace = await getWorkspace({
@@ -48,18 +51,19 @@ async function getPackageFolders(): Promise<WorkspaceFolderItem[] | undefined> {
       includeRoot: true,
     })
     if (workspace) {
-      const rootPkg = workspace.getPackageForRoot(workspace.root)
-      return [
-        {
+      const ret: WorkspaceFolderItem[] = []
+      if (includeRoot)
+        ret.push({
           label: `${getFolderEmoji(workspace.root, workspace.root)}${
-            rootPkg || "root"
+            workspace.getPackageForRoot(workspace.root) || "root"
           }`,
           description: `${
             workspace.type[0].toUpperCase() + workspace.type.slice(1)
           } Workspace Root`,
           root: Uri.file(workspace.root),
           isRoot: true,
-        },
+        })
+      ret.push(
         ...workspace
           .getPackages()
           .filter((p) => p.root !== workspace.root)
@@ -71,8 +75,9 @@ async function getPackageFolders(): Promise<WorkspaceFolderItem[] | undefined> {
               isRoot: false,
             }
           })
-          .sort((a, b) => a.root.fsPath.localeCompare(b.root.fsPath)),
-      ]
+          .sort((a, b) => a.root.fsPath.localeCompare(b.root.fsPath))
+      )
+      return ret
     }
   }
 }
@@ -104,7 +109,8 @@ function addWorkspaceFolder(item: WorkspaceFolderItem) {
 }
 
 async function updateAll(items?: WorkspaceFolderItem[], clean = false) {
-  if (!items) items = await getPackageFolders()
+  const config = vscodeWorkspace.getConfiguration("monorepoWorkspace")
+  if (!items) items = await getPackageFolders(config.get("includeRoot"))
   if (!items) return
   const itemsSet = new Set(items.map((item) => item.root.fsPath))
   const folders = vscodeWorkspace.workspaceFolders

@@ -50,6 +50,11 @@
     "configuration": {
       "title": "Monorepo Workspace",
       "properties": {
+        "monorepoWorkspace.includeRoot": {
+          "type": "boolean",
+          "default": true,
+          "description": "Inlcude the top-level monorepo root path as a workspace folder"
+        },
         "monorepoWorkspace.folders.regex.apps": {
           "type": "string",
           "default": "^app|web|api|frontend|backend",
