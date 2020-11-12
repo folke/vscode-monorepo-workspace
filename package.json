@@ -120,7 +120,7 @@
     "@typescript-eslint/eslint-plugin": "2.34.0",
     "@typescript-eslint/parser": "2.34.0",
     "devmoji": "2.1.9",
-    "eslint": "7.12.0",
+    "eslint": "7.12.1",
     "eslint-config-prettier": "6.14.0",
     "eslint-plugin-chai-expect": "2.2.0",
     "eslint-plugin-import": "2.22.1",
