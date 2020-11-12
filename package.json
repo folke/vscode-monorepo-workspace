@@ -133,7 +133,7 @@
     "husky": "4.3.0",
     "mocha": "8.2.1",
     "prettier": "2.1.2",
-    "typescript": "3.9.7",
+    "typescript": "4.0.5",
     "vscode-test": "1.4.0"
   },
   "dependencies": {
