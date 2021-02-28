@@ -16,6 +16,11 @@
 * Set breakpoints in your code inside `src/extension.ts` to debug your extension.
 * Find output from your extension in the debug console.
 
+## Publishing
+
+* create a new token at https://dev.azure.com/hipfu/_usersSettings/tokens
+* `vsce login [TOKEN]`
+
 ## Make changes
 
 * You can relaunch the extension from the debug toolbar after changing code in `src/extension.ts`.
