@@ -25,18 +25,15 @@ function getFolderEmoji(root: string, pkgRoot: string) {
   const custom = config.get<{ regex: string; prefix: string }[]>("custom")
   if (custom?.length) {
     for (const c of custom) {
-      if (c.prefix && c.regex) {
-        if (new RegExp(c.regex, "u").test(dir)) return c.prefix
-      }
+      if (c.prefix && c.regex && new RegExp(c.regex, "u").test(dir))
+        return c.prefix
     }
   }
 
   for (const type of ["apps", "libs", "tools"]) {
     const regex = config.get<string>(`regex.${type}`)
     const prefix = config.get<string>(`prefix.${type}`)
-    if (regex && prefix) {
-      if (new RegExp(regex, "u").test(dir)) return prefix
-    }
+    if (regex && prefix && new RegExp(regex, "u").test(dir)) return prefix
   }
   return config.get<string>("prefix.unknown") || ""
 }
@@ -183,24 +180,14 @@ export function activate(context: ExtensionContext) {
   context.subscriptions.push(
     commands.registerCommand("extension.openPackageCurrentWindow", () =>
       openPackage(PackageAction.currentWindow)
-    )
-  )
-  context.subscriptions.push(
+    ),
     commands.registerCommand("extension.openPackageNewWindow", () =>
       openPackage(PackageAction.newWindow)
-    )
-  )
-  context.subscriptions.push(
+    ),
     commands.registerCommand("extension.openPackageWorkspaceFolder", () =>
       openPackage(PackageAction.workspaceFolder)
-    )
-  )
-
-  context.subscriptions.push(
-    commands.registerCommand("extension.updateAll", () => updateAll())
-  )
-
-  context.subscriptions.push(
+    ),
+    commands.registerCommand("extension.updateAll", () => updateAll()),
     commands.registerCommand("extension.select", () => select())
   )
 }
