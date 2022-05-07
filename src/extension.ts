@@ -41,6 +41,7 @@ function getFolderEmoji(root: string, pkgRoot: string) {
 async function getPackageFolders(
   includeRoot = true
 ): Promise<WorkspaceFolderItem[] | undefined> {
+  const config = vscodeWorkspace.getConfiguration("monorepoWorkspace.folders")
   const cwd = vscodeWorkspace.workspaceFolders?.[0].uri.fsPath
   if (cwd) {
     const workspace = await getWorkspace({
@@ -65,8 +66,11 @@ async function getPackageFolders(
           .getPackages()
           .filter((p) => p.root !== workspace.root)
           .map((p) => {
+            const name = config.get<boolean>("removeScope")
+              ? p.name.replace(/^@.+\//u, "")
+              : p.name
             return {
-              label: `${getFolderEmoji(workspace.root, p.root)}${p.name}`,
+              label: `${getFolderEmoji(workspace.root, p.root)}${name}`,
               description: `at ${path.relative(workspace.root, p.root)}`,
               root: Uri.file(p.root),
               isRoot: false,
