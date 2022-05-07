@@ -53,7 +53,7 @@
         "monorepoWorkspace.includeRoot": {
           "type": "boolean",
           "default": true,
-          "description": "Inlcude the top-level monorepo root path as a workspace folder"
+          "description": "Include the top-level monorepo root path as a workspace folder"
         },
         "monorepoWorkspace.folders.regex.apps": {
           "type": "string",
