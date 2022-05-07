@@ -99,6 +99,11 @@
           "type": "array",
           "default": [],
           "description": "An array of custom 'regex/prefix' pairs like: [{regex:'foo', prefix:'bar'}, {regex:'fffoo', prefix:'bbbar'}]"
+        },
+        "monorepoWorkspace.folders.removeScope": {
+          "type": "boolean",
+          "default": false,
+          "description": "Remove scope from folder names i.e. @scope/my-package -> my-package"
         }
       }
     }
