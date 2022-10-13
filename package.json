@@ -3,15 +3,16 @@
   "displayName": "Monorepo Workspace",
   "description": "Manage monorepos with multi-root workspaces. Supports Lerna, Yarn, Pnpm, Rushjs and recursive package directories",
   "version": "1.3.1",
-  "publisher": "folke",
+  "publisher": "melMass",
   "repository": "http://github.com/folke/vscode-monorepo-workspace",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "MIT",
   "engines": {
     "vscode": ">=1.53.0"
   },
   "categories": [
     "Other"
   ],
+  "type": "module",
   "keywords": [
     "workspace",
     "monorepo",
@@ -22,7 +23,7 @@
   "activationEvents": [
     "workspaceContains:**/package.json"
   ],
-  "main": "./out/extension.js",
+  "main": "./out/extension.cjs",
   "icon": "images/icon.png",
   "contributes": {
     "commands": [
@@ -104,46 +105,48 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "yarn run compile",
-    "compile": "npx rollup -c",
+    "vscode:prepublish": "npm run compile",
+    "compile": "vite build",
+    "compile:dev": "vite build -m development",
     "lint": "eslint src --ext ts",
-    "pretest": "yarn run compile && yarn run lint",
+    "pretest": "npm run compile && npm run lint",
     "test": "node ./out/test/run-test.js",
     "release": "vsce package && vsce publish"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "17.1.0",
-    "@rollup/plugin-node-resolve": "11.2.0",
-    "@rollup/plugin-typescript": "8.2.0",
     "@types/glob": "7.1.3",
+    "@types/lodash": "^4.14.186",
     "@types/mocha": "8.2.1",
     "@types/node": "14.14.31",
     "@types/vscode": "1.53.0",
-    "@typescript-eslint/eslint-plugin": "4.15.2",
-    "@typescript-eslint/parser": "4.15.2",
+    "@typescript-eslint/eslint-plugin": "5.40.0",
+    "@typescript-eslint/parser": "5.40.0",
     "devmoji": "2.2.0",
-    "eslint": "7.21.0",
+    "eslint": "8.25.0",
     "eslint-config-prettier": "8.1.0",
-    "eslint-plugin-chai-expect": "2.2.0",
-    "eslint-plugin-import": "2.22.1",
-    "eslint-plugin-jest": "24.1.5",
+    "eslint-plugin-chai-expect": "3.0.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jest": "27.1.1",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-prettier": "3.3.1",
     "eslint-plugin-promise": "4.3.1",
-    "eslint-plugin-unicorn": "28.0.2",
+    "eslint-plugin-unicorn": "44.0.2",
     "glob": "7.1.6",
     "husky": "5.1.1",
-    "mocha": "8.3.0",
+    "mocha": "10.0.0",
     "prettier": "2.2.1",
-    "rollup": "2.40.0",
-    "rollup-plugin-terser": "7.0.2",
-    "rollup-plugin-typescript2": "0.30.0",
+    "terser": "^5.15.1",
     "tslib": "2.1.0",
     "typescript": "4.2.2",
-    "vscode-test": "1.5.1"
+    "vite": "^3.1.8",
+    "vscode-test": "1.6.1"
   },
   "dependencies": {
-    "rollup-plugin-progress": "1.1.2",
-    "ultra-runner": "3.10.5"
+    "@nrwl/devkit": "14.8.4",
+    "lodash": "^4.17.21",
+    "nx": "14.8.4",
+    "toml": "^3.0.0",
+    "ultra-runner": "3.10.5",
+    "yaml": "^2.1.3"
   }
 }
