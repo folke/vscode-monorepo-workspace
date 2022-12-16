@@ -128,8 +128,9 @@ async function select(items?: WorkspaceFolderItem[]) {
   if (!items) items = await getPackageFolders()
   if (!items) return
   const itemsSet = new Map(items.map((item) => [item.root.fsPath, item]))
-  const folders = vscodeWorkspace.workspaceFolders
-
+  // Sort the items so that the selected folders are on top
+  items.sort((a, b) => Number(a.picked || 0) - Number(b.picked || 0))
+  
   if (folders) {
     for (const folder of folders) {
       if (itemsSet.has(folder.uri.fsPath)) {
