@@ -132,7 +132,7 @@
     "eslint-plugin-promise": "4.3.1",
     "eslint-plugin-unicorn": "28.0.2",
     "glob": "7.1.6",
-    "husky": "5.1.1",
+    "husky": "9.1.7",
     "mocha": "8.3.0",
     "prettier": "2.2.1",
     "rollup": "2.40.0",
