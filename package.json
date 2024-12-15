@@ -112,7 +112,7 @@
     "release": "vsce package && vsce publish"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "17.1.0",
+    "@rollup/plugin-commonjs": "28.0.2",
     "@rollup/plugin-node-resolve": "11.2.0",
     "@rollup/plugin-typescript": "8.2.0",
     "@types/glob": "7.1.3",
